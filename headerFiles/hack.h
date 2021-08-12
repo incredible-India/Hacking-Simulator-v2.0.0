@@ -52,7 +52,10 @@ void ExecutionOver()
 
 void intro()
 {
-
+    FILE *read =fopen("./readFiles/one.txt","r");
+    FILE *readone =fopen("./readFiles/two.txt","r");
+    char reads;
+    char usertype;
      char path[MAX_BUF];
 
     system("cls");
@@ -77,15 +80,51 @@ void intro()
     for(int i =0;i<2;i++)
     system("ipconfig");
 
+    fflush(stdin);
+
  int  ErrCode = system(strcat(path,"\\js\\index.html"));
 
     defaultError(ErrCode);
 
     system("color 01");
 
-int  ErrCodee = system(strcat(path,"\\pythonCode\\opn.py"));
 
-  defaultError(ErrCodee);
+
+reads=fgetc(read);
+while(!feof(read))
+{
+ printf("%c",reads);
+
+   reads=fgetc(read);
+
+}
+
+fflush(stdin);
+fclose(read);
+
+
+usertype=fgetc(readone);
+ system("color 02");
+ int dbs =0;
+
+while(!feof(readone))
+{
+ printf("%c",usertype);
+
+  dbs++;
+
+   if(dbs >= 5)
+   {
+       getch();
+       dbs=0;
+
+   }
+   usertype = fgetc(readone);
+
+}
+
+fclose(readone);
+  //defaultError(ErrCodee);
 }
 
 
