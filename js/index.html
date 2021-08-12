@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HCKWRLD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body style="background-color: black;">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+    <div  id="regions_div" style="width: 900px; height: 500px;"></div>
+
+
+</body>
+
+
+<script type="text/javascript">
+    google.charts.load('current', {
+      'packages':['geochart'],
+    });
+    google.charts.setOnLoadCallback(drawRegionsMap);
+
+    function drawRegionsMap() {
+
+        let arr = [
+      
+    
+        ['United States', 300],
+        ['Brazil', 400],
+        ['Canada', 500],
+        
+        ['Russia',550],
+        ['France', 600],
+        ['China', 700],
+        ['India',200],
+       
+      ]
+        let i=0;
+
+        var options = { 
+        //   colorAxis: {colors: ['#00853f', 'black', '#e31b23']},
+          backgroundColor: '#000',
+        //   datalessRegionColor: '#f8bbd0',
+          };
+
+      setInterval(() => {
+          i++;
+        var data = google.visualization.arrayToDataTable([ ['Country', 'Ping'],arr[i]]);
+        chart.draw(data,options)
+        if(i>5)
+        {
+            i=0
+        }
+      }, 1000);
+      
+
+     
+
+      var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+    //   chart.draw(data, options);
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</html>
